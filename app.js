@@ -28,6 +28,7 @@ const brickPadding = 10;
 const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
 let bricks = [];
+let bricksLeft = brickRowCount * brickColumnCount;
 
 for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
@@ -107,6 +108,11 @@ function collisionDetection() {
                 ) {
                     dy = -dy;
                     b.status = 0;
+                    bricksLeft--;
+                    if (bricksLeft === 0) {
+                        alert("Вітаємо! Ви виграли!");
+                        document.location.reload();
+                    }
                 }
             }
         }
